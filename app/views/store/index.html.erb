@@ -1,0 +1,33 @@
+<h1>Welcome To Thundercats</h1>
+<p>Thunder Thunder Thundercats Whooohoo!</p>
+
+<div>
+	<% @products.each do |product| %>
+	<div class="product-bubble">
+		<h3><%= product.name %></h3>
+		
+		<div class="description"> 
+			<%= product.description %>
+		</div>
+
+		<div class="price">	
+			<%= number_to_currency product.unit_price %>
+		</div>
+
+		<div class="more-info">
+				Sku: <%= product.sku %><br/>
+				Brand: <%= product.brand %><br/>
+				Model#: <%= product.model_num %>
+		</div>
+
+		<div>
+			Quantity:
+			<input type="text" class="quantity" value="1" placeholder="Please, enter a number" />
+			<button class="add-to-cart-button">Add to Cart</button>
+
+
+		</div>
+</div>
+	<% end %>
+
+</div>
