@@ -1,42 +1,32 @@
 <h1>Editing product</h1>
 
-<div style="float:left;width:40%;">
-<%= render 'form' %>
+<div style="float:left;width:40%">
+	<%= render 'form' %>
 </div>
+<div style="float:left;width:60%">
+	<h3>Assign Category</h3>
+	<%= form_for(@product_category, :url => assign_category_path) do |f| %>
+		<% if @product_category.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@product_category.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-<div style="float:left;width:60%;">
-	<h3>"Assign Category"</h3>
-		<%= form_for(@product_category, url: assign_category_path) do |f| %>
+	      <ul>
+	      <% @product_category.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
 
-		
-		  <% if @product_category.errors.any? %>
-		    <div id="error_explanation">
-		      <h2><%= pluralize(@product_category.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-		      <ul>
-		      <% @product_category.errors.full_messages.each do |msg| %>
-		        <li><%= msg %></li>
-		      <% end %>
-		      </ul>
-		    </div>
-		  <% end %>
-
-		<%= f.hidden_field :product_id, value: @product.id %>
-		<%= f.select :category_id, Category.all.map { |cat| [cat.name, cat.id] } %>
-		<%= f.submit "Add Category" %>
-	<%end%>
-
-	<hr/> 
-
-		<% @product.categories.each do |cat| %>
+		<%= f.hidden_field :product_id, :value => @product.id %>
+		<%= f.select :category_id, Category.order('name asc').map{|cat| [cat.name, cat.id]} %>
+		<%= f.submit "Assign" %>
+	<% end %>
+	<hr/>
+	<% @product.categories.each do |cat| %>
 		<%= cat.name %>
-		<% end %>
-
-	</h3>
-
+	<% end %>
 </div>
-
-<div style="clear:both;"></div>
-
+<div style="clear:both"></div>
 <%= link_to 'Show', @product %> |
 <%= link_to 'Back', products_path %>

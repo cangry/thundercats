@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112160430) do
+ActiveRecord::Schema.define(version: 20131126141631) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20131112160430) do
   create_table "orders", force: true do |t|
     t.decimal  "sub_total"
     t.decimal  "sale_tax"
-    t.decimal  "grand_toatal"
+    t.decimal  "grand_total"
     t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  
 
   # GET /products
   # GET /products.json
@@ -25,18 +24,15 @@ class ProductsController < ApplicationController
   end
 
   def assign_category
-        product_category_hash = params.require(:product_category).permit(:product_id, :category_id)
-
-        @product_category = ProductCategory.new(product_category_hash)
-      
-      if @product_category.save
-        redirect_to edit_product_path(@product_category.product_id)
-      else
-        @product = Product.find(@product_category.product_id)
-        render action: 'edit'
-      end
+    product_category_hash = params.require(:product_category).permit(:product_id, :category_id)
+    @product_category = ProductCategory.new(product_category_hash)
+    if @product_category.save
+      redirect_to edit_product_path(@product_category.product_id)
+    else
+      @product = Product.find(@product_category.product_id)
+      render action: 'edit'
     end
-  
+  end
 
   # POST /products
   # POST /products.json

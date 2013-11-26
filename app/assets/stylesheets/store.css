@@ -3,34 +3,44 @@
   They will automatically be included in application.css.
 */
 .product-bubble {
-
-border: 1px solid gray;
-padding: 10px;
-display: inline-block;
-width: 29%;
+	border: 1px solid gray;
+	padding:1%;
+	display: inline-block;
+	width: 30%;
+	min-height:150px;
 }
-
 .product-bubble .description {
-
-min-height: 40px;
-background-color: beige;
-padding: 4px;
+	min-height:40px;
+	background-color:beige;
+	padding:4px;
 }
-
 .product-bubble .price {
-
-background-color: black;
-color: yellow;
-font-size: 18px;
-font-weight: bold;
-text-align: center;
-
+	background-color:black;
+	color:yellow;
+	font-size:18px;
+	font-weight:bold;
+	text-align:center;	
 }
-
 .product-bubble .more-info {
-
-font-size: 10px;
-font-style: italic;
-
+	font-size:10px;
+	font-style:italic;
 }
-
+.cart-panel {
+	position:relative;
+}
+.cart {
+	position:absolute;
+	width:200px;
+	top:-40px;
+	right:10px;
+	background-color:beige;
+	padding:4px;
+	border:2px solid red;
+}
+#cart_total {
+	font-weight:bold;
+	text-align:right;
+}
+#cart_detail_panel {
+	display:none;
+}
